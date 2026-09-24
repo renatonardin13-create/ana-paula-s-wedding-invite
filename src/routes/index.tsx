@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { CalendarDays, Check, MapPin } from "lucide-react";
 
-import invitationImage from "@/assets/convite-final.jpg";
+import invitationImage from "@/assets/casal-joao-ana.jpg";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -66,14 +66,18 @@ function WeddingInvitation() {
         <img
           src={invitationImage}
           alt="Convite do casamento de João Carlos Marques e Ana Paula Fortunato"
-          width={768}
-          height={1376}
+          width={726}
+          height={1600}
           className="block h-auto w-full"
         />
 
+        <div className="absolute left-[28%] top-[32.25%] flex h-[4.25%] w-[62%] items-center bg-paper pl-[1%]">
+          <span className="whitespace-nowrap font-display text-[clamp(1.55rem,7vw,3.25rem)] font-semibold leading-none text-forest">Ana Paula Fortunato</span>
+        </div>
+
         <Dialog>
           <DialogTrigger asChild>
-            <Button aria-label="Confirmar presença" variant="ghost" className="absolute left-[16.8%] top-[50.1%] h-[3.55%] w-[66.4%] bg-transparent opacity-0" />
+            <Button aria-label="Confirmar presença" variant="ghost" className="absolute left-[16.8%] top-[49.05%] h-[3.55%] w-[66.4%] bg-transparent opacity-0" />
           </DialogTrigger>
           <DialogContent className="max-w-[calc(100%-2rem)] border-gold/40 bg-paper sm:max-w-md">
             <DialogHeader>
@@ -98,7 +102,7 @@ function WeddingInvitation() {
 
         <Dialog>
           <DialogTrigger asChild>
-            <Button aria-label="Como chegar" variant="ghost" className="absolute left-[16.8%] top-[54.4%] h-[3.2%] w-[31.8%] bg-transparent opacity-0" />
+            <Button aria-label="Como chegar" variant="ghost" className="absolute left-[16.8%] top-[53.35%] h-[3.2%] w-[31.8%] bg-transparent opacity-0" />
           </DialogTrigger>
           <DialogContent className="max-w-[calc(100%-2rem)] border-gold/40 bg-paper sm:max-w-md">
             <DialogHeader>
@@ -113,7 +117,7 @@ function WeddingInvitation() {
           aria-label="Adicionar à agenda"
           variant="ghost"
           onClick={addToCalendar}
-          className="absolute left-[51.4%] top-[54.4%] h-[3.2%] w-[31.8%] bg-transparent opacity-0"
+          className="absolute left-[51.4%] top-[53.35%] h-[3.2%] w-[31.8%] bg-transparent opacity-0"
         ><CalendarDays /></Button>
       </div>
     </main>

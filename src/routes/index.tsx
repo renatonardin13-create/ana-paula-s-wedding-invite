@@ -147,6 +147,12 @@ function WeddingInvitation() {
   function handleRsvpSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (rsvpName.trim()) {
+      const message = encodeURIComponent(
+        `Olá Ana Paula! Aqui está a minha confirmação de presença:\n\n*Nome:* ${rsvpName.trim()}\n*Telefone:* ${rsvpPhone.trim() || "Não informado"}\n*Status:* ${rsvpStatus}\n*Pessoas:* ${rsvpGuests}\n*Mensagem:* ${rsvpMessage.trim() || "Nenhuma mensagem adicional."}`,
+      );
+      const whatsappUrl = `https://wa.me/5517974000330?text=${message}`;
+      window.open(whatsappUrl, "_blank");
+
       setRsvpSubmitted(true);
       setRsvpName("");
       setRsvpPhone("");

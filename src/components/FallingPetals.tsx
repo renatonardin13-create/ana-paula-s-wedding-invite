@@ -1,54 +1,72 @@
 import React, { useEffect, useState } from "react";
 
-interface PetalItem {
+interface FallingItem {
   id: number;
   left: number; // percentage
   size: number; // px
   duration: number; // seconds
   delay: number; // seconds
   rotation: number; // degrees
-  type: "petal" | "initials";
+  type: "petal" | "initials" | "rose";
   text?: string;
+  color: string;
 }
 
 export function FallingPetals() {
-  const [items, setItems] = useState<PetalItem[]>([]);
+  const [items, setItems] = useState<FallingItem[]>([]);
 
   useEffect(() => {
-    const generated: PetalItem[] = [];
-    // Generate 18 items: mix of petals and "J & A"
-    for (let i = 0; i < 18; i++) {
-      const isInitials = i % 3 === 0;
+    const colors = ["#D97757", "#FFA07A", "#E07A5F", "#CC5838", "#F4A261", "#E76F51"];
+    const generated: FallingItem[] = [];
+
+    // Generate 45 items across the entire screen viewport (fixed during scroll)
+    for (let i = 0; i < 45; i++) {
+      const typeRand = Math.random();
+      let type: "petal" | "initials" | "rose" = "petal";
+      if (typeRand < 0.35) {
+        type = "initials";
+      } else if (typeRand < 0.6) {
+        type = "rose";
+      } else {
+        type = "petal";
+      }
+
       generated.push({
         id: i,
         left: Math.random() * 100,
-        size: isInitials ? Math.random() * 14 + 16 : Math.random() * 12 + 10,
-        duration: Math.random() * 8 + 6,
-        delay: Math.random() * 8,
+        size:
+          type === "initials"
+            ? Math.random() * 12 + 18
+            : type === "rose"
+              ? Math.random() * 10 + 16
+              : Math.random() * 10 + 12,
+        duration: Math.random() * 8 + 5,
+        delay: Math.random() * 10,
         rotation: Math.random() * 360,
-        type: isInitials ? "initials" : "petal",
+        type,
         text: "J & A",
+        color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
     setItems(generated);
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
       <style>{`
         @keyframes fallAndSway {
           0% {
             transform: translateY(-10vh) translateX(0) rotate(0deg);
             opacity: 0;
           }
-          15% {
-            opacity: 0.6;
+          10% {
+            opacity: 0.9;
           }
-          85% {
-            opacity: 0.6;
+          90% {
+            opacity: 0.9;
           }
           100% {
-            transform: translateY(110vh) translateX(40px) rotate(360deg);
+            transform: translateY(108vh) translateX(60px) rotate(360deg);
             opacity: 0;
           }
         }
@@ -62,26 +80,41 @@ export function FallingPetals() {
           className="absolute animate-fall select-none"
           style={{
             left: `${item.left}%`,
-            top: `-5%`,
+            top: `-10%`,
             animationDuration: `${item.duration}s`,
             animationDelay: `${item.delay}s`,
           }}
         >
           {item.type === "initials" ? (
             <span
-              className="font-serif italic font-bold text-[#D97757]/40 tracking-wider drop-shadow-sm"
-              style={{ fontSize: `${item.size}px` }}
+              className="font-serif italic font-bold tracking-wider drop-shadow-[0_1px_3px_rgba(217,119,87,0.4)]"
+              style={{
+                fontSize: `${item.size}px`,
+                color: item.color,
+              }}
             >
               {item.text}
             </span>
+          ) : item.type === "rose" ? (
+            <span
+              className="inline-block drop-shadow-sm select-none"
+              style={{
+                fontSize: `${item.size * 1.2}px`,
+                transform: `rotate(${item.rotation}deg)`,
+              }}
+            >
+              🌹
+            </span>
           ) : (
             <div
-              className="rounded-full bg-[#D97757]/35 shadow-sm"
+              className="shadow-sm"
               style={{
                 width: `${item.size}px`,
                 height: `${item.size * 1.4}px`,
+                backgroundColor: item.color,
                 borderRadius: "50% 0 50% 50%",
                 transform: `rotate(${item.rotation}deg)`,
+                opacity: 0.85,
               }}
             />
           )}

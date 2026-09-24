@@ -16,10 +16,10 @@ export function FallingPetals() {
   const [items, setItems] = useState<FallingItem[]>([]);
 
   useEffect(() => {
-    const colors = ["#D97757", "#FFA07A", "#E07A5F", "#CC5838", "#F4A261", "#E76F51", "#B34522"];
+    const colors = ["#D97757", "#FFA07A", "#E07A5F", "#CC5838", "#F4A261", "#E76F51"];
     const generated: FallingItem[] = [];
 
-    // Generate 45 items across the entire screen viewport, soft and subtle in the background
+    // Generate 45 items across the entire screen viewport, visible, soft and elegant
     for (let i = 0; i < 45; i++) {
       const typeRand = Math.random();
       let type: "petal" | "initials" | "rose" = "petal";
@@ -36,10 +36,10 @@ export function FallingPetals() {
         left: Math.random() * 100,
         size:
           type === "initials"
-            ? Math.random() * 12 + 16
+            ? Math.random() * 12 + 18
             : type === "rose"
-              ? Math.random() * 10 + 14
-              : Math.random() * 8 + 10,
+              ? Math.random() * 10 + 16
+              : Math.random() * 10 + 12,
         duration: Math.random() * 8 + 5,
         delay: Math.random() * 8,
         rotation: Math.random() * 360,
@@ -52,9 +52,9 @@ export function FallingPetals() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-20">
       <style>{`
-        @keyframes fallAndSwaySoft {
+        @keyframes fallAndSwayVisible {
           0% {
             transform: translateY(-5vh) translateX(0) rotate(0deg);
           }
@@ -65,25 +65,25 @@ export function FallingPetals() {
             transform: translateY(105vh) translateX(-15px) rotate(360deg);
           }
         }
-        .animate-fall-soft {
-          animation: fallAndSwaySoft linear infinite;
+        .animate-fall-visible {
+          animation: fallAndSwayVisible linear infinite;
         }
       `}</style>
       {items.map((item) => (
         <div
           key={item.id}
-          className="absolute animate-fall-soft select-none"
+          className="absolute animate-fall-visible select-none"
           style={{
             left: `${item.left}%`,
             top: `-10%`,
             animationDuration: `${item.duration}s`,
             animationDelay: `${item.delay}s`,
-            opacity: 0.32,
+            opacity: 0.65,
           }}
         >
           {item.type === "initials" ? (
             <span
-              className="font-serif italic font-medium tracking-wider"
+              className="font-serif italic font-semibold tracking-wider drop-shadow-sm"
               style={{
                 fontSize: `${item.size}px`,
                 color: item.color,
@@ -93,7 +93,7 @@ export function FallingPetals() {
             </span>
           ) : item.type === "rose" ? (
             <span
-              className="inline-block select-none filter opacity-70"
+              className="inline-block select-none drop-shadow-sm"
               style={{
                 fontSize: `${item.size * 1.2}px`,
                 transform: `rotate(${item.rotation}deg)`,
@@ -103,6 +103,7 @@ export function FallingPetals() {
             </span>
           ) : (
             <div
+              className="shadow-sm"
               style={{
                 width: `${item.size}px`,
                 height: `${item.size * 1.4}px`,

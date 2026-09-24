@@ -30,7 +30,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Casamento de João Carlos & Ana Paula | 07.11.2026" },
+      { title: "Casamento de João Carlos Marques & Ana Paula Fortunato | 07.11.2026" },
       {
         name: "description",
         content:
@@ -243,15 +243,35 @@ function WeddingInvitation() {
     <main className="min-h-screen bg-white py-6 sm:px-6 sm:py-12 relative">
       <div className="mx-auto w-full max-w-[768px] relative z-10">
         {/* Invitation Card */}
-        <div className="invitation-shadow relative mx-auto w-full max-h-[650px] overflow-hidden bg-[#FAF8F5]">
-          <img
-            src={invitationImage}
-            alt="Convite do casamento de João Carlos Marques e Ana Paula Fortunato"
-            width={726}
-            height={1600}
-            className="block w-full object-cover object-top"
-            style={{ maxHeight: "650px" }}
-          />
+        <div className="invitation-shadow relative mx-auto w-full overflow-hidden rounded-2xl bg-[#FAF8F5] pb-8 shadow-xl border border-[#D97757]/30">
+          <div className="relative w-full h-[360px] sm:h-[440px] overflow-hidden">
+            <img
+              src={invitationImage}
+              alt="Convite do casamento de João Carlos Marques & Ana Paula Fortunato"
+              className="absolute inset-0 h-full w-full object-cover object-top"
+            />
+          </div>
+          <div className="px-6 pt-4 text-center relative z-10">
+            <p className="font-sans text-xs uppercase tracking-[0.25em] text-[#8C3B24]/80">
+              Nosso Casamento
+            </p>
+            <div className="mx-auto my-2 flex items-center justify-center gap-2">
+              <span className="h-px w-8 bg-[#D97757]/40" />
+              <Heart className="h-3 w-3 fill-[#D97757] text-[#D97757]" />
+              <span className="h-px w-8 bg-[#D97757]/40" />
+            </div>
+            <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#123D2C]">
+              João Carlos Marques{" "}
+              <span className="font-serif italic font-normal text-[#D97757]">&</span> Ana Paula
+              Fortunato
+            </h1>
+            <p className="mt-3 font-body text-sm text-[#8C3B24]/90 sm:text-base">
+              Com a bênção de Deus, convidamos você para celebrar conosco o nosso casamento
+            </p>
+            <p className="mt-2 font-sans text-sm font-semibold tracking-wider text-[#D97757]">
+              07 de Novembro de 2026 às 20h
+            </p>
+          </div>
         </div>
 
         {/* Nossa História de Amor & Galeria */}
@@ -293,7 +313,7 @@ function WeddingInvitation() {
 
               <div className="mt-6 pt-4 border-t border-[#D97757]/20 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D97757]">
                 <Heart className="h-3.5 w-3.5 fill-[#D97757] text-[#D97757]" />
-                <span>João Carlos & Ana Paula</span>
+                <span>João Carlos Marques & Ana Paula Fortunato</span>
                 <Heart className="h-3.5 w-3.5 fill-[#D97757] text-[#D97757]" />
               </div>
             </div>
@@ -666,11 +686,14 @@ function WeddingInvitation() {
           <p className="font-serif italic text-lg text-[#FDE0D9] sm:text-xl">
             Esperamos por você para celebrar o nosso amor!
           </p>
-          <div className="mt-4 font-display text-2xl font-bold tracking-wide text-[#FAF8F5] sm:text-3xl">
-            João Carlos & Ana Paula
+          <div className="mt-4 font-display text-xl sm:text-2xl font-bold tracking-wide text-[#FAF8F5]">
+            João Carlos Marques & Ana Paula Fortunato
           </div>
           <div className="mt-6 border-t border-[#D97757]/20 pt-6 text-xs text-[#F3E8E2]/70">
-            <p>© 2026 Casamento de João Carlos & Ana Paula • Todos os direitos reservados</p>
+            <p>
+              © 2026 Casamento de João Carlos Marques & Ana Paula Fortunato • Todos os direitos
+              reservados
+            </p>
           </div>
         </footer>
       </div>

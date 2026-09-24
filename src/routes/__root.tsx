@@ -78,13 +78,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "João Carlos & Ana Paula | 07 de novembro de 2026" },
+      { title: "João Carlos Marques & Ana Paula Fortunato | 07 de novembro de 2026" },
       {
         name: "description",
         content:
           "Convite de casamento de João Carlos Marques e Ana Paula Fortunato, realizado em 7 de novembro de 2026 às 20h.",
       },
-      { property: "og:title", content: "João Carlos & Ana Paula | 07 de novembro de 2026" },
+      {
+        property: "og:title",
+        content: "João Carlos Marques & Ana Paula Fortunato | 07 de novembro de 2026",
+      },
       {
         property: "og:description",
         content:
@@ -93,7 +96,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/src/assets/convite-final.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "João Carlos & Ana Paula | 07 de novembro de 2026" },
+      {
+        name: "twitter:title",
+        content: "João Carlos Marques & Ana Paula Fortunato | 07 de novembro de 2026",
+      },
       {
         name: "twitter:description",
         content:

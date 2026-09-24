@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -77,24 +76,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "João Carlos & Ana Paula" },
-      { name: "description", content: "Convite de casamento de João Carlos Marques e Ana Paula Fortunato." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "João Carlos & Ana Paula" },
-      { property: "og:description", content: "Celebre conosco este dia especial." },
+      { title: "João Carlos & Ana Paula | 07 de novembro de 2026" },
+      {
+        name: "description",
+        content:
+          "Convite de casamento de João Carlos Marques e Ana Paula Fortunato, realizado em 7 de novembro de 2026 às 20h.",
+      },
+      { property: "og:title", content: "João Carlos & Ana Paula | 07 de novembro de 2026" },
+      {
+        property: "og:description",
+        content:
+          "Com a bênção de Deus, convidamos você para celebrar conosco o nosso casamento em 7 de novembro de 2026 às 20h.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/src/assets/convite-final.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "João Carlos & Ana Paula | 07 de novembro de 2026" },
+      {
+        name: "twitter:description",
+        content:
+          "Convite de casamento de João Carlos Marques e Ana Paula Fortunato, realizado em 7 de novembro de 2026 às 20h.",
+      },
+      { name: "twitter:image", content: "/src/assets/convite-final.jpg" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&family=Parisienne&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Parisienne&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -105,9 +117,73 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                  extend: {
+                    colors: {
+                      border: 'rgba(184, 149, 82, 0.35)',
+                      input: 'rgba(184, 149, 82, 0.45)',
+                      ring: '#B89552',
+                      background: '#F8F5ED',
+                      foreground: '#123D2C',
+                      primary: {
+                        DEFAULT: '#123D2C',
+                        foreground: '#F8F5ED',
+                      },
+                      secondary: {
+                        DEFAULT: '#E8DFC8',
+                        foreground: '#123D2C',
+                      },
+                      muted: {
+                        DEFAULT: '#EFE9DD',
+                        foreground: '#5E7467',
+                      },
+                      accent: {
+                        DEFAULT: '#B89552',
+                        foreground: '#123D2C',
+                      },
+                      gold: '#B89552',
+                      'gold-soft': '#E8DFC8',
+                      forest: '#123D2C',
+                      'forest-foreground': '#F8F5ED',
+                      paper: '#F8F5ED',
+                    },
+                    fontFamily: {
+                      display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                      body: ['Montserrat', 'sans-serif'],
+                      script: ['Parisienne', 'cursive'],
+                    }
+                  }
+                }
+              }
+            `,
+          }}
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              body {
+                background-color: #123D2C;
+                color: #123D2C;
+                font-family: Montserrat, sans-serif;
+              }
+              .paper-texture {
+                background-color: #F8F5ED;
+              }
+              .invitation-shadow {
+                box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+              }
+            `,
+          }}
+        />
       </head>
       <body>
         {children}

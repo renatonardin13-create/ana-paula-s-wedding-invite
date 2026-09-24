@@ -164,9 +164,19 @@
 
 @utility paper-texture {
   background-image:
-    linear-gradient(to bottom, color-mix(in oklab, var(--paper) 96%, transparent), color-mix(in oklab, var(--gold-soft) 42%, var(--paper))),
-    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 7%, transparent) 0.6px, transparent 0.8px);
-  background-size: auto, 12px 12px;
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--paper) 96%, transparent),
+      color-mix(in oklab, var(--gold-soft) 42%, var(--paper))
+    ),
+    radial-gradient(
+      circle at 20% 30%,
+      color-mix(in oklab, var(--gold) 7%, transparent) 0.6px,
+      transparent 0.8px
+    );
+  background-size:
+    auto,
+    12px 12px;
 }
 
 @utility invitation-shadow {
@@ -178,11 +188,21 @@
 }
 
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .reveal-up { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-up {
+    animation: none;
+  }
 }

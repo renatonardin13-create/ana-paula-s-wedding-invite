@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { FallingPetals } from "@/components/FallingPetals";
 
 function NotFoundComponent() {
   return (
@@ -202,6 +203,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <FallingPetals />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>

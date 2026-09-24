@@ -17,7 +17,6 @@ import {
 import invitationImage from "@/assets/casal-joao-ana.jpg";
 import weddingGardenImage from "@/assets/wedding-garden.jpg";
 import weddingRingsImage from "@/assets/wedding-rings.jpg";
-import { FallingPetals } from "@/components/FallingPetals";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -241,8 +240,7 @@ function WeddingInvitation() {
   }
 
   return (
-    <main className="min-h-screen bg-white py-6 sm:px-6 sm:py-12 relative overflow-hidden">
-      <FallingPetals />
+    <main className="min-h-screen bg-white py-6 sm:px-6 sm:py-12 relative">
       <div className="mx-auto w-full max-w-[768px] relative z-10">
         {/* Invitation Card */}
         <div className="invitation-shadow relative mx-auto w-full max-h-[650px] overflow-hidden bg-[#FAF8F5]">

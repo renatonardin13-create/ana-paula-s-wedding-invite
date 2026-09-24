@@ -172,6 +172,10 @@ function RootShell({ children }: { children: ReactNode }) {
             __html: `
               body {
                 background-color: #123D2C;
+                background-image: linear-gradient(rgba(18, 61, 44, 0.92), rgba(18, 61, 44, 0.92)), url('/wedding-background.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
                 color: #123D2C;
                 font-family: Montserrat, sans-serif;
               }
